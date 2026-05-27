@@ -1,0 +1,11 @@
+# Claude Code local config & machine-specific dev wrappers
+/.claude
+
+/node_modules
+/.next
+/out
+/build
+*.log
+.DS_Store
+.env*.local
+next-env.d.ts
