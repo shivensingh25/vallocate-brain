@@ -9,13 +9,13 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "V-brain by VisagioX — The intelligence layer for how your firm decides",
+  title: "V-brain by VisagioX — One brain behind every decision your firm makes",
   description:
-    "V-brain is a passive intelligence layer that captures how consultants and partners actually make decisions — learning from the artifacts of daily work. V-allocate is the first product: AI-driven project allocation for consulting firms.",
+    "V-brain is a passive intelligence layer that learns how professional services firms actually work — from the artifacts of daily work, not indexed documents. Agents run on top of it. V-allocate, for project allocation, is the first.",
   openGraph: {
-    title: "V-brain by VisagioX",
+    title: "V-brain by VisagioX — the company brain",
     description:
-      "A passive intelligence layer that learns how your firm decides. V-allocate is the first product, built for project allocation.",
+      "A passive intelligence layer that learns how your firm works. Agents run on top of it — V-allocate is the first.",
     type: "website",
   },
 };

@@ -1,6 +1,7 @@
 import { Nav } from "@/components/Nav";
 import { Hero } from "@/components/Hero";
 import { VBrain } from "@/components/VBrain";
+import { Agents } from "@/components/Agents";
 import { VAllocate } from "@/components/VAllocate";
 import { HowItWorks } from "@/components/HowItWorks";
 import { Audience } from "@/components/Audience";
@@ -13,6 +14,7 @@ export default function Home() {
       <Nav />
       <Hero />
       <VBrain />
+      <Agents />
       <VAllocate />
       <HowItWorks />
       <Audience />

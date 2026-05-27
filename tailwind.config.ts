@@ -10,7 +10,8 @@ const config: Config = {
       colors: {
         teal: {
           DEFAULT: "#00363D",
-          deep: "#002A2F",
+          deep: "#00282D",
+          black: "#001A1D",
         },
         green: {
           accent: "#00A189",
@@ -22,19 +23,18 @@ const config: Config = {
         sans: ["var(--font-inter)", "ui-sans-serif", "system-ui", "sans-serif"],
       },
       maxWidth: {
-        content: "1160px",
+        content: "1180px",
       },
       letterSpacing: {
         tightish: "-0.02em",
-      },
-      keyframes: {
-        "fade-up": {
-          "0%": { opacity: "0", transform: "translateY(12px)" },
-          "100%": { opacity: "1", transform: "translateY(0)" },
-        },
+        tighter2: "-0.035em",
       },
       animation: {
-        "fade-up": "fade-up 0.6s cubic-bezier(0.16,1,0.3,1) both",
+        float: "float 6s ease-in-out infinite",
+        "spin-slow": "spinSlow 38s linear infinite",
+        "spin-slow-rev": "spinSlowReverse 52s linear infinite",
+        twinkle: "twinkle 3.5s ease-in-out infinite",
+        "fade-up": "fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) both",
       },
     },
   },

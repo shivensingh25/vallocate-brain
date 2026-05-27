@@ -11,8 +11,8 @@ html {
 }
 
 body {
-  background-color: #F7F3F5;
-  color: #00363D;
+  background-color: #00282D;
+  color: #F7F3F5;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -22,12 +22,104 @@ body {
   color: #00363D;
 }
 
+/* ---------- motion primitives ---------- */
 @layer utilities {
+  /* drifting gradient mesh */
+  .mesh {
+    background:
+      radial-gradient(40% 50% at 18% 22%, rgba(0, 161, 137, 0.30), transparent 70%),
+      radial-gradient(38% 44% at 82% 18%, rgba(169, 253, 172, 0.16), transparent 70%),
+      radial-gradient(48% 52% at 60% 88%, rgba(0, 161, 137, 0.22), transparent 72%);
+    animation: meshDrift 22s ease-in-out infinite alternate;
+    will-change: transform, opacity;
+  }
+
   .grain {
-    background-image: radial-gradient(
-      rgba(255, 255, 255, 0.04) 1px,
-      transparent 1px
-    );
+    background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
     background-size: 4px 4px;
+  }
+
+  /* faint dotted grid texture */
+  .dotgrid {
+    background-image: radial-gradient(rgba(169, 253, 172, 0.10) 1px, transparent 1px);
+    background-size: 26px 26px;
+    mask-image: radial-gradient(70% 70% at 50% 45%, #000 30%, transparent 100%);
+  }
+
+  /* scroll reveal — JS toggles .is-in */
+  .reveal {
+    opacity: 0;
+    transform: translateY(22px);
+    transition:
+      opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .reveal.is-in {
+    opacity: 1;
+    transform: none;
+  }
+
+  .text-glow {
+    text-shadow: 0 0 28px rgba(169, 253, 172, 0.35);
+  }
+}
+
+@keyframes meshDrift {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.85;
+  }
+  100% {
+    transform: translate3d(0, -3%, 0) scale(1.08);
+    opacity: 1;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulseRing {
+  0% { transform: scale(0.7); opacity: 0.55; }
+  80% { opacity: 0; }
+  100% { transform: scale(1.7); opacity: 0; }
+}
+
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes spinSlowReverse {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(-360deg); }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.25; }
+  50% { opacity: 1; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -150% 0; }
+  100% { background-position: 250% 0; }
+}
+
+@keyframes fadeUp {
+  0% { opacity: 0; transform: translateY(14px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mesh,
+  [class*="animate-"],
+  [style*="animation"] {
+    animation: none !important;
+  }
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
   }
 }

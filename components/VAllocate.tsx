@@ -1,53 +1,62 @@
+import { Reveal } from "./Reveal";
+import { AllocateMock } from "./AllocateMock";
+
 const features = [
   {
     title: "Ranked candidate shortlists",
-    body: "Ask who to staff on a project and get a ranked list — scored on skills, sector history, seniority, and fit. Not a database query. A recommendation you can defend.",
+    body: "Ask who to staff and get a ranked list — scored on skills, sector history, seniority, and fit. A recommendation you can defend, not a database query.",
   },
   {
     title: "Availability, unified",
-    body: "Pulls real availability from the systems you already run — HR, time tracking, project tools — into one view. No more pinging three people to find out who's free.",
+    body: "Pulls real availability from the systems you already run into one view. No more pinging three people to find out who's free.",
   },
   {
     title: "Learns from outcomes",
-    body: "When a staffing call works (or doesn't), V-allocate notices. Recommendations improve against how your firm actually performs, not a generic benchmark.",
+    body: "When a call works — or doesn't — V-allocate notices. It improves against how your firm actually performs, not a generic benchmark.",
   },
 ];
 
 export function VAllocate() {
   return (
-    <section id="vallocate" className="relative bg-teal text-offwhite">
-      <div aria-hidden className="grain absolute inset-0 opacity-40" />
-      <div className="relative mx-auto max-w-content px-5 py-24 sm:px-8 sm:py-28">
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-          <div className="max-w-2xl">
-            <p className="text-[13px] font-semibold uppercase tracking-[0.14em] text-green-light">
-              The first product on V-brain
-            </p>
-            <h2 className="mt-3 text-balance text-[32px] font-semibold leading-[1.1] tracking-tightish sm:text-[42px]">
-              V-allocate: project staffing, decided.
-            </h2>
-          </div>
-          <p className="max-w-md text-[16px] leading-relaxed text-white/65">
-            An AI agent for project allocation. It turns the question
-            &ldquo;who should we put on this?&rdquo; from a week of back-and-forth
-            into a shortlist in seconds.
-          </p>
-        </div>
+    <section id="vallocate" className="relative bg-teal-deep">
+      <div className="relative mx-auto max-w-content px-5 py-24 sm:px-8 sm:py-32">
+        <div className="grid items-center gap-14 lg:grid-cols-[0.95fr_1.05fr]">
+          <Reveal className="order-2 lg:order-1">
+            <AllocateMock />
+          </Reveal>
 
-        <div className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 md:grid-cols-3">
-          {features.map((f, i) => (
-            <div key={f.title} className="bg-teal-deep/60 p-8 backdrop-blur-sm">
-              <p className="text-[13px] font-semibold text-green-light/70">
-                0{i + 1}
-              </p>
-              <h3 className="mt-4 text-[19px] font-semibold tracking-tightish text-offwhite">
-                {f.title}
-              </h3>
-              <p className="mt-3 text-[15px] leading-relaxed text-white/60">
-                {f.body}
-              </p>
+          <Reveal className="order-1 lg:order-2" delay={80}>
+            <p className="text-[13px] font-semibold uppercase tracking-[0.16em] text-green-accent">
+              The first agent
+            </p>
+            <h2 className="mt-3 text-balance text-[30px] font-semibold leading-[1.08] tracking-tightish text-offwhite sm:text-[40px]">
+              V-allocate: staffing, decided in seconds.
+            </h2>
+            <p className="mt-5 text-[16px] leading-relaxed text-white/60">
+              It turns &ldquo;who should we put on this?&rdquo; from a week of
+              back-and-forth into a shortlist you can act on — and it gets better
+              every time the firm makes a call.
+            </p>
+
+            <div className="mt-8 space-y-5">
+              {features.map((f) => (
+                <div key={f.title} className="flex gap-4">
+                  <span
+                    aria-hidden
+                    className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-green-light shadow-[0_0_12px_rgba(169,253,172,0.8)]"
+                  />
+                  <div>
+                    <h3 className="text-[16px] font-semibold tracking-tightish text-offwhite">
+                      {f.title}
+                    </h3>
+                    <p className="mt-1 text-[14px] leading-relaxed text-white/55">
+                      {f.body}
+                    </p>
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
+          </Reveal>
         </div>
       </div>
     </section>

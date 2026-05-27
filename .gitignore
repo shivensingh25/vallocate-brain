@@ -6,6 +6,7 @@
 /out
 /build
 *.log
+*.tsbuildinfo
 .DS_Store
 .env*.local
 next-env.d.ts
