@@ -1,56 +1,58 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef } from "react";
+
+declare global {
+  interface Window {
+    Tally?: { loadEmbeds: () => void };
+  }
+}
+
+const TALLY_FORM_ID = "zxLo7E";
+const TALLY_SCRIPT_SRC = "https://tally.so/widgets/embed.js";
 
 export function WaitlistForm() {
-  const [email, setEmail] = useState("");
-  const [submitted, setSubmitted] = useState(false);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
 
-  function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    // Placeholder: wire this to your waitlist backend (e.g. Formspree, API route).
-    if (!email) return;
-    setSubmitted(true);
-  }
-
-  if (submitted) {
-    return (
-      <div className="rounded-2xl border border-green-accent/30 bg-green-light/10 p-6 text-left">
-        <p className="text-[15px] font-semibold text-green-light">
-          You&apos;re on the list.
-        </p>
-        <p className="mt-1.5 text-[14px] leading-relaxed text-white/70">
-          We&apos;ll be in touch as early-access spots open up for{" "}
-          <span className="text-green-light">{email}</span>.
-        </p>
-      </div>
+  useEffect(() => {
+    // Ensure Tally's auto-resize/embed script is loaded once.
+    const existing = document.querySelector<HTMLScriptElement>(
+      `script[src="${TALLY_SCRIPT_SRC}"]`
     );
-  }
+
+    const onReady = () => {
+      if (window.Tally) window.Tally.loadEmbeds();
+    };
+
+    if (existing) {
+      onReady();
+      return;
+    }
+
+    const script = document.createElement("script");
+    script.src = TALLY_SCRIPT_SRC;
+    script.async = true;
+    script.onload = onReady;
+    document.body.appendChild(script);
+  }, []);
+
+  const src = `https://tally.so/embed/${TALLY_FORM_ID}?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1`;
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="flex flex-col gap-3 sm:flex-row"
-      noValidate
-    >
-      <label htmlFor="waitlist-email" className="sr-only">
-        Work email
-      </label>
-      <input
-        id="waitlist-email"
-        type="email"
-        required
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        placeholder="you@firm.com"
-        className="w-full flex-1 rounded-full border border-white/15 bg-white/5 px-5 py-3.5 text-[15px] text-offwhite placeholder:text-white/35 outline-none transition-colors focus:border-green-accent/60 focus:bg-white/10"
+    <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4 sm:p-5">
+      <iframe
+        ref={iframeRef}
+        data-tally-src={src}
+        src={src}
+        title="Join the V-brain early-access waitlist"
+        loading="lazy"
+        width="100%"
+        height="220"
+        frameBorder={0}
+        marginHeight={0}
+        marginWidth={0}
+        className="w-full"
       />
-      <button
-        type="submit"
-        className="shrink-0 rounded-full bg-green-accent px-6 py-3.5 text-[15px] font-semibold text-teal transition-transform hover:-translate-y-px active:translate-y-0"
-      >
-        Request access
-      </button>
-    </form>
+    </div>
   );
 }
