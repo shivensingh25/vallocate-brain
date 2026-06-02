@@ -10,3 +10,5 @@
 .DS_Store
 .env*.local
 next-env.d.ts
+
+.vercel
