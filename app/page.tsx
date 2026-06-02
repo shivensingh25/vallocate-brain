@@ -2,7 +2,6 @@ import { Nav } from "@/components/Nav";
 import { Hero } from "@/components/Hero";
 import { VBrain } from "@/components/VBrain";
 import { Agents } from "@/components/Agents";
-import { VAllocate } from "@/components/VAllocate";
 import { HowItWorks } from "@/components/HowItWorks";
 import { Audience } from "@/components/Audience";
 import { CTASection } from "@/components/CTASection";
@@ -15,7 +14,6 @@ export default function Home() {
       <Hero />
       <VBrain />
       <Agents />
-      <VAllocate />
       <HowItWorks />
       <Audience />
       <CTASection />

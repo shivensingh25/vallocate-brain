@@ -1,10 +1,10 @@
 import { Wordmark } from "./Wordmark";
 
 const links = [
-  { label: "Platform", href: "#vbrain" },
-  { label: "Agents", href: "#agents" },
-  { label: "How it works", href: "#how" },
-  { label: "Who it's for", href: "#audience" },
+  { label: "Platform", href: "/#vbrain" },
+  { label: "V-allocate", href: "/v-allocate" },
+  { label: "How it works", href: "/#how" },
+  { label: "Who it's for", href: "/#audience" },
 ];
 
 export function Nav() {

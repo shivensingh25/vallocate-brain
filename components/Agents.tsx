@@ -91,7 +91,7 @@ export function Agents() {
                 </p>
                 {a.live && (
                   <a
-                    href="#vallocate"
+                    href="/v-allocate"
                     className="mt-6 inline-flex items-center gap-1.5 text-[14px] font-medium text-green-light transition-colors hover:text-offwhite"
                   >
                     See how V-allocate works

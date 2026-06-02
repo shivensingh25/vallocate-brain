@@ -1,7 +1,7 @@
 export function Wordmark() {
   return (
     <a
-      href="#top"
+      href="/"
       className="group inline-flex items-baseline gap-2 select-none"
       aria-label="VisagioX home"
     >
