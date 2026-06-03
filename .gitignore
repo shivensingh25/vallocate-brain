@@ -12,3 +12,12 @@
 next-env.d.ts
 
 .vercel
+
+# Backend secrets-added by shiven
+**/.env
+**/token.json
+**/credentials.json
+**/company_brain.db
+**/__pycache__/
+**/*.pyc
+**/venv/
