@@ -715,6 +715,14 @@ from google.genai import types
 
 # client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
 
+# ==================== CUSTOM CSS ====================
+
+st.set_page_config(
+    page_title="Vallocate Brain",
+    page_icon="🧠",
+    layout="wide",
+    initial_sidebar_state="expanded",
+)
 try:
     import streamlit as st
     GEMINI_KEY = st.secrets["GEMINI_API_KEY"]
@@ -725,14 +733,7 @@ except Exception:
 
 client = genai.Client(api_key=GEMINI_KEY)
 
-# ==================== CUSTOM CSS ====================
 
-st.set_page_config(
-    page_title="Vallocate Brain",
-    page_icon="🧠",
-    layout="wide",
-    initial_sidebar_state="expanded",
-)
 
 st.markdown("""
 <style>
